@@ -17,3 +17,5 @@ console.log(indice);
 
 let valor = arrayPopulado.find(elemento => elemento.search('1'));
 console.log(valor);
+
+let _undefined
