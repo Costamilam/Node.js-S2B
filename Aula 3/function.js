@@ -13,3 +13,4 @@ const teste3 = (var1, var2) => console.log(var1 ** var2);
 })(3)(3);
 
 teste1();
+teste3(5, 3);
