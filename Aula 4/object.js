@@ -20,13 +20,13 @@ for(let elemento of conjunto) {
     console.log(elemento);
 }
 
-// __proto__ objeto 
-let objeto = {
-    set: function(name, value) {
-        return this[name] = value;
+// __proto__ utiliaries 
+let utiliaries = {
+    set: function(key, value) {
+        return this[key] = value;
     },
     size: function() {
-        return Object.keys(objeto).length;
+        return Object.keys(utiliaries).length;
     },
     toString: function() {
         let str = '{\n';
@@ -46,15 +46,32 @@ String.prototype.trim = function(oldValue, newValue) {
 }
 
 //Construtor
-function Pessoa() {
-    this.__proto__ = objeto;
+function Construtor() {
+    this.__proto__ = utiliaries;
     return this;
 }
 
-let p1 = new Pessoa();
-p1.set('nome', 'Guilherme');
-p1.set('aniversario', new Date('2000-09-21'));
-console.log(p1.toString());
-console.log(p1.size());
-console.log(p1.__proto__);
+class Classe {
+    constructor() {
+        this.__proto__ = utiliaries;
+        return this;
+    }
+    set(key, value) {
+        this[key] = value;
+    }
+}
+
+let construtor = new Construtor();
+construtor.set('nome', 'Guilherme');
+construtor.set('aniversario', new Date('2000-09-21'));
+console.log(construtor.toString());
+console.log(construtor.size());
+console.log(construtor.__proto__);
+
+let classe = new Classe();
+classe.set('nome', 'Guilherme');
+classe.set('aniversario', new Date('2000-09-21'));
+console.log(classe.toString());
+console.log(classe.size());
+console.log(classe.__proto__);
 
