@@ -18,4 +18,17 @@ console.log(indice);
 let valor = arrayPopulado.find(elemento => elemento.search('1'));
 console.log(valor);
 
-let _undefined
+let filtro = arrayPopulado.filter(elemento => typeof(elemento) == 'string' || typeof(elemento) == 'number');
+console.log(filtro);
+
+let pessoa = ['Guilherme', 'Costamilam', 17, true, 'desenvolvedor web', 'perito em gambi', null];
+let [nome, sobrenome, idade, sexo, ...info] = pessoa;
+console.log(`${nome} ${sobrenome}, ${idade} anos - ${info.join(', ').trim(', ', '')}`);
+
+// ---- MY TRIM() ----
+String.prototype.trim = function(oldValue, newValue) {
+    regex = new RegExp(`^[${oldValue}]+|[${oldValue}]+$`, 'g');
+    return this.replace(regex, newValue);
+}
+
+console.log(String.valueOf());
