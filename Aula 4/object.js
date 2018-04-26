@@ -20,9 +20,8 @@ for(let elemento of conjunto) {
     console.log(elemento);
 }
 
-//Objeos
+// __proto__ objeto 
 let objeto = {
-    key: 'value',
     set: function(name, value) {
         return this[name] = value;
     },
@@ -32,7 +31,7 @@ let objeto = {
     toString: function() {
         let str = '{\n';
 
-        for(let elemento of Object.keys(objeto)) {
+        for(let elemento of Object.keys(this)) {
             str += `    ${elemento}: ${this[elemento]},\n`
         }
 
@@ -46,7 +45,16 @@ String.prototype.trim = function(oldValue, newValue) {
     return this.replace(regex, newValue);
 }
 
-objeto.set('chave', 'valor')
-console.log(objeto.size());
-console.log(objeto.toString());
+//Construtor
+function Pessoa() {
+    this.__proto__ = objeto;
+    return this;
+}
+
+let p1 = new Pessoa();
+p1.set('nome', 'Guilherme');
+p1.set('aniversario', new Date('2000-09-21'));
+console.log(p1.toString());
+console.log(p1.size());
+console.log(p1.__proto__);
 
