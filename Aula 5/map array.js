@@ -34,3 +34,9 @@ array.sort().forEach(function(element, index) {
         console.log(`the value ${element} repeat ${count} times`);
     }
 });
+
+console.log(' - - - forEach  - - - ');
+
+array.reduce(function(count, value, index, array, initialValue){
+    console.log(count++)
+});
