@@ -35,7 +35,7 @@ array.sort().forEach(function(element, index) {
     }
 });
 
-console.log(' - - - reduce  - - - ');
+console.log(' - - - map reduce  - - - ');
 
 array.reduce(function(count, value, index, array, initialValue){
     console.log(count++)
