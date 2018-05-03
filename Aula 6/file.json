@@ -1,0 +1,8 @@
+{
+    "variable1": "value",
+    "variable2": null,
+    "variable3": {
+        "subvariable1": "subvalue",
+        "subvariable2": 7.35
+    }
+}
