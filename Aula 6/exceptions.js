@@ -9,3 +9,32 @@ try {
 }
 
 console.log('Exceptions not show in console');
+
+// ---- MY TRIM ----
+String.prototype.trim = function(oldValue, newValue) {
+    regex = new RegExp(`^[${oldValue}]+|[${oldValue}]+$`, 'g');
+    return this.replace(regex, newValue);
+}
+// ---- MY TO STRING ERROR ----
+Error.prototype.toString = function() {
+    let str = '{\n';
+
+    for(let elemento of Object.keys(this)) {
+        str += `    ${elemento}: ${this[elemento]},\n`
+    }
+
+    return `${str.trim(',\n', '')}\n}`;
+}
+
+let syntaxError = new SyntaxError('Message');
+try {
+    throw syntaxError;
+} catch(exceptionError) {
+    console.log(syntaxError.toString());
+}
+
+let error = new Error('Error');
+error.name = 'ErrorName';
+error.message = 'Error Message'
+
+throw error;
