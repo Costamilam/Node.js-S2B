@@ -2,7 +2,7 @@ const importObject = require('./export.js');
 
 const fileSystem = require('fs');
 
-let jsonImportWithFile
+let jsonImportWithFile;
 
 fileSystem.readFile('file.json', (error, data) => {
     if(error) {
@@ -19,6 +19,15 @@ fileSystem.readFile('file.json', (error, data) => {
 
         console.log(jsonImportWithFile);
     }
-})
+});
 
 console.log(jsonImportWithFile); // Return 'undefined' because readFile function is async
+
+const fileSystemPromisse = require('fs');
+
+fileSystemPromisse.promises.copyFile('file.json', 'destination.txt')
+    .then(function() {
+        fileSystemPromisse.rename('destination.txt', 'rename.json');
+    })
+    .then(() => console.log('file.json was copied to destination.txt and renamed o rename.json'))
+    .catch(() => console.log('The file could not be copied, consequently, not renamed'));
