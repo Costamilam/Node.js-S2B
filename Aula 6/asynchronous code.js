@@ -1,5 +1,3 @@
-import { readFile } from 'fs';
-
 const importObject = require('./export.js');
 
 const fileSystem = require('fs');
@@ -27,19 +25,19 @@ console.log(jsonImportWithFile); // Return 'undefined' because readFile function
 
 (async function() {
     try {
-        let data = await readFile('file.json');
+        let data = await fileSystem.readFile('file.json');
         const JSONObject = JSON.parse(data);
-        console.log(JSONObject);
+        console.log(JSONObject.toString());
     } catch(exceptionError) {
-        console.error(exceptionError);
+        console.error(`Error in load file: ${exceptionError}`);
     }
 })();
 
-const fileSystemPromisse = require('fs');
+//const fileSystemPromisse = require('fs');
 
-fileSystemPromisse.promises.copyFile('file.json', 'destination.txt')
+/*fileSystemPromisse.promises.copyFile('file.json', 'destination.txt')
     .then(function() {
         fileSystemPromisse.rename('destination.txt', 'rename.json');
     })
     .then(() => console.log('file.json was copied to destination.txt and renamed o rename.json'))
-    .catch(() => console.log('The file could not be copied or not renamed'));
+    .catch(() => console.log('The file could not be copied or not renamed'));*/
