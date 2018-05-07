@@ -33,11 +33,11 @@ console.log(jsonImportWithFile); // Return 'undefined' because readFile function
     }
 })();
 
-//const fileSystemPromisse = require('fs');
+const fileSystemPromisse = require('fs');
 
-/*fileSystemPromisse.promises.copyFile('file.json', 'destination.txt')
+fileSystemPromisse.promises.copyFile('file.json', 'destination.txt')
     .then(function() {
         fileSystemPromisse.rename('destination.txt', 'rename.json');
     })
     .then(() => console.log('file.json was copied to destination.txt and renamed o rename.json'))
-    .catch(() => console.log('The file could not be copied or not renamed'));*/
+    .catch(() => console.log('The file could not be copied or not renamed'));
