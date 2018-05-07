@@ -1,0 +1,18 @@
+{
+  "name": "guilherme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://costamilam.visualstudio.com/_git/Node.js%20S2B"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.0.7"
+  }
+}
