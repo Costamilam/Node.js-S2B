@@ -16,9 +16,21 @@ const collectionProducts = 'Product';
 const collectionRequests = 'Request';
 
 let option = 'insertUser';
+
 let userId = '';
-let requestId = '';
+let userName = '';
+let userEmail = '';
+let userPassword = '';
+let userSenha = '';
+
 let productId = '';
+let productName = '';
+let productDescription = '';
+let productValue = '';
+
+let requestId = '';
+let requestProducts = [{}];
+let requestDeliveryDate = '';
 
 //Simples example of connection, insert and select
 (async function() {
@@ -120,7 +132,7 @@ let productId = '';
                         product: productId, 
                         quantidade: 3
                     }], 
-                    dataEntrega: '2018-05-29 16:30:42'
+                    deliveryDate: '2018-05-29 16:30:42'
                 });
                 console.log(`Inserted ${result.insertedCount} document into the collection. Document id: ${result.insertedId}`);
 
@@ -144,7 +156,7 @@ let productId = '';
                             product: '5af48362869e581a8c35b3a0', 
                             quantidade: 3
                         }], 
-                        dataEntrega: '2018-05-29 16:30:42'
+                        deliveryDate: '2018-05-29 16:30:42'
                     }
                 });
                 console.log(`The id document ${update.upsertedId} has been changed:\n${update.result}`);
