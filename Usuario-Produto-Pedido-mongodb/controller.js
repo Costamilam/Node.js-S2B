@@ -19,9 +19,9 @@ let option = 'insertUser';
 
 let userId = '';
 let userName = '';
+let userPhone = '';
 let userEmail = '';
 let userPassword = '';
-let userSenha = '';
 
 let productId = '';
 let productName = '';
@@ -29,8 +29,12 @@ let productDescription = '';
 let productValue = '';
 
 let requestId = '';
-let requestProducts = [{}];
 let requestDeliveryDate = '';
+let requestUser = '';
+let requestProducts = [{
+    id: '', 
+    quantity: 0
+}];
 
 //Simples example of connection, insert and select
 (async function() {
@@ -49,10 +53,10 @@ let requestDeliveryDate = '';
             case 'insertUser':
                 //Insert document in collection
                 let result = await database.collection(collectionUser).insertOne({
-                    name: 'Gui', 
-                    email: 'a@a.a', 
-                    password: 'asasasaa', 
-                    phone: '123456789'
+                    name: userName, 
+                    email: userEmail, 
+                    password: userPassword, 
+                    phone: userPhone
                 });
                 console.log(`Inserted ${result.insertedCount} document into the collection. Document id: ${result.insertedId}`);
 
@@ -71,10 +75,10 @@ let requestDeliveryDate = '';
                 }, 
                 {
                     $set: {
-                        name: 'Gui', 
-                        email: 'b@b.b', 
-                        password: 'uiouio', 
-                        phone: '987654321'
+                        name: userName, 
+                        email: userEmail, 
+                        password: userPassword, 
+                        phone: userPhone
                     }
                 });
                 console.log(`The id document ${update.upsertedId} has been changed:\n${update.result}`);
@@ -89,9 +93,9 @@ let requestDeliveryDate = '';
             case 'insertProduct':
                 //Insert document in collection
                 let result = await database.collection(collectionProduct).insertOne({
-                    name: 'tal', 
-                    description: 'uma la', 
-                    value: 2
+                    name: productName, 
+                    description: productDescription, 
+                    value: productValue
                 });
                 console.log(`Inserted ${result.insertedCount} document into the collection. Document id: ${result.insertedId}`);
 
@@ -110,9 +114,9 @@ let requestDeliveryDate = '';
                 }, 
                 {
                     $set: {
-                        name: 'tal', 
-                        description: 'uma la', 
-                        value: 2
+                        name: productName, 
+                        description: productDescription, 
+                        value: productValue
                     }
                 });
                 console.log(`The id document ${update.upsertedId} has been changed:\n${update.result}`);
@@ -127,12 +131,9 @@ let requestDeliveryDate = '';
             case 'insertRequest':
                 //Insert document in collection
                 let result = await database.collection(collectionRequest).insertOne({
-                    user: userId, 
-                    products: [{
-                        product: productId, 
-                        quantidade: 3
-                    }], 
-                    deliveryDate: '2018-05-29 16:30:42'
+                    deliveryDate: requestDeliveryDate, 
+                    user: requestUser, 
+                    products: requestProducts
                 });
                 console.log(`Inserted ${result.insertedCount} document into the collection. Document id: ${result.insertedId}`);
 
@@ -151,12 +152,9 @@ let requestDeliveryDate = '';
                 }, 
                 {
                     $set: {
-                        user: '5af48362869e581a8c35b39f', 
-                        products: [{
-                            product: '5af48362869e581a8c35b3a0', 
-                            quantidade: 3
-                        }], 
-                        deliveryDate: '2018-05-29 16:30:42'
+                        deliveryDate: requestDeliveryDate, 
+                        user: requestUser, 
+                        products: requestProducts
                     }
                 });
                 console.log(`The id document ${update.upsertedId} has been changed:\n${update.result}`);
