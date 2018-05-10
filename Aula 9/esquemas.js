@@ -1,32 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Esquema da coleção de usuário
-const Usuario = Schema(
+const Livro = Schema(
     {
-        nome: { type: String, required: true },
-        email: { type: String, required: true },
-        senha: { type: String, required: true },
-        telefone: { type: String, required: true },
+        titulo: { type: String, required: true },
+        autores: [{ type: Schema.ObjectId, ref: 'Autor' }]
     }
 );
-exports.Usuario = mongoose.model('Usuario', Usuario);
+exports.Livro = mongoose.model('Livro', Livro);
 
-//Esquema da coleção de produto
-const Produto = Schema(
+const Autor = Schema(
     {
-        nome: { type: String, required: true },
-        descricao: { type: String, required: true }
+        primeiro_nome: { type: String, required: true, max: 100 },
+        ultimo_nome: { type: String, required: true, max: 100 }
     }
 );
-exports.Produto = mongoose.model('Produto', Produto);
+exports.Autor = mongoose.model('Autor', Autor);
 
-//Esquema da coleção de pedido
-const Pedido = Schema(
+const Emprestimo = Schema(
     {
-        usuario: { type: Schema.ObjectId, ref: 'Usuario', required: true },
-        produto: [{ type : Schema.ObjectId, ref: 'Produto' }],
-        dataEntrega: { type: Date, required: true }
+        livro: { type: Schema.ObjectId, ref: 'Livro', required: true },
+        status: { type: String, required: true, enum: ['Disponivel', 'Emprestado'], default: 'Disponivel' },
+        dataEntrega: { type: Date, default: Date.now }
     }
 );
-exports.Pedido = mongoose.model('Pedido', Pedido);
+exports.Emprestimo = mongoose.model('Emprestimo', Emprestimo);
