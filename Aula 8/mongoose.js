@@ -14,4 +14,4 @@ const urlAccess = 'mongodb://localhost:27017/exampleMongose';
             console.log('Disconnected successfully');
         }
     }
-})();
+})(); 
