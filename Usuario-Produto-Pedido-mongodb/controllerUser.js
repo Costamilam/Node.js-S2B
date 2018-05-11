@@ -83,13 +83,14 @@ let router = express.Router();
 
 //Define the route actions 
 router.get('/:action', async function(request, response) {
-    let parameters = request.params;
+    /*let parameters = request.params;
 
     if(parameters.action && parameters.action.match('(insert|find|update|remove)')) { 
         response.send(await action(parameters.action));
     } else {
         response.status(400).send('Action invalid');
-    }
+    }*/
+    response.send(request.body);
 });
 
 module.exports = router;
