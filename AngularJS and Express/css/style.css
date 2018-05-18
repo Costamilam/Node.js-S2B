@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: linear 0.7s;
+}
+input {
+    padding: 5px;
+    border-width: 0 0 3px 0;
+    border-bottom-color: black;
+    width: 300px;
+}
+input:focus {
+    outline: 0;
+    border-bottom-color: skyblue;
+    transition: linear 1s;
+}

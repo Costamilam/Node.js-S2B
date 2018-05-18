@@ -1,0 +1,19 @@
+<html lang="pt-BR" ng-app="example3app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular JS and Express Example 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="./example3service.js"></script>
+    <script src="./example3controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<!-- ng-controller: controllerName as nickname (equals SQL: tableName as name) -->
+<body ng-controller="example3controller as ec">
+    <h1>List of People ({{ec.data.length}})</h1>
+    <ul ng-repeat="data in ec.data">
+        <li>{{data.name}} is {{data.age}} years old</li>
+    </ul>
+</body>
+</html>

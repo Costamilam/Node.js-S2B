@@ -1,3 +1,9 @@
+angular
+    .module('appDataPOA', [])
+    .controller('controllerDataPOA', async function() {
+        this.data = await getDataPOA();
+    });
+
 async function getDataPOA() {
     if (navigator.onLine) {
         let json = [];
@@ -13,10 +19,10 @@ async function getDataPOA() {
 
         localStorage.dataPOA = JSON.stringify(json);
 
-		return json;
+        return json;
     } else if (!localStorage.dataPOA) {
-		return null
+        return null
     } else {
-    	return JSON.parse(localStorage.dataPOA);
+        return JSON.parse(localStorage.dataPOA);
     }
-};
+}

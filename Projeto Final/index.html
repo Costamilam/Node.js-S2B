@@ -1,0 +1,28 @@
+<html lang="pt-BR" ng-app="appDataPOA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular JS and Express Example 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="./controllerDataPOA.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body ng-controller="controllerDataPOA as control">
+    <h1>Count: {{control.data.length}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in control.data">
+                <td>{{row.NOME}}</td>
+                <td>{{row.ENDEREÇO}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
