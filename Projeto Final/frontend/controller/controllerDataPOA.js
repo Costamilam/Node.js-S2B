@@ -20,9 +20,9 @@ async function getDataPOA() {
         localStorage.dataPOA = JSON.stringify(json);
 
         return json;
-    } else if (!localStorage.dataPOA) {
-        return null
-    } else {
+    } else if (localStorage.dataPOA) {
         return JSON.parse(localStorage.dataPOA);
+    } else {
+        return null;
     }
 }
