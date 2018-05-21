@@ -1,42 +1,54 @@
 const serviceUser = require('../service/serviceUser.js');
-const bodyParser = require('body-parser');
 
 let router = require('express').Router();
 
 //Search user
 router.get('/', async function(request, response) {
     let object = {
-        email: request.body.userEmail, 
+        username: request.body.userUsername, 
         password: request.body.userPassword
     }
     //Validar entradas
 
-    response.send(await serviceUser.find({user: 'abc'}));
+    response.send(await serviceUser.find(object));
 });
 
 //Insert user
 router.post('/', async function(request, response) {
     let object = {
         name: request.body.userName, 
-        email: request.body.userEmail, 
+        username: request.body.userUsername, 
         password: request.body.userPassword, 
+        email: request.body.userEmail, 
+        facebook: request.body.userFacebook,
+        snapchat: request.body.userSnapchat,
+        twitter: request.body.userTwitter, 
+        instagram: request.body.userInstagram, 
+        whatsapp: request.body.userWhatsapp, 
         phone: request.body.userPhone
     }
     //Validar entradas
-
-    response.send(await serviceUser.insert(object));
+    let a = await serviceUser.insert(object)
+    console.log(a.result)
+    //response.status(200).json(a.result);
+    response.type('text/html').send('<p>success</p>');
 });
 
 //Update user
 router.put('/', async function(request, response) {
     let objectSearch = {
-        oldEmail: request.body.userOldEmail,
-        oldPassword: request.body.userOldPassword
+        username: request.body.userUsername, 
+        password: request.body.userPassword
     }
     let objectUpdate = {
         name: request.body.userName, 
-        email: request.body.userEmail, 
         password: request.body.userPassword, 
+        email: request.body.userEmail, 
+        facebook: request.body.userFacebook,
+        snapchat: request.body.userSnapchat,
+        twitter: request.body.userTwitter, 
+        instagram: request.body.userInstagram, 
+        whatsapp: request.body.userWhatsapp, 
         phone: request.body.userPhone
     }
     //Validar entradas
@@ -47,7 +59,7 @@ router.put('/', async function(request, response) {
 //Delete user
 router.delete('/', async function(request, response) {
     let object = {
-        email: request.body.userEmail, 
+        username: request.body.userUsername, 
         password: request.body.userPassword
     }
     //Validar entradas

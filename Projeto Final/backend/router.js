@@ -9,7 +9,7 @@ let meeting = require('./controller/controllerMeeting.js');
 app.use(bodyParser.json());
 
 app.use('/user', user);
-//app.use('/meeting', meeting);
+app.use('/meeting', meeting);
 
 app.use(express.static(`${__dirname}/frontend`));
 

@@ -1,0 +1,34 @@
+<form id="formPostUser">
+    <input type="text" name="userName" placeholder="Nome" required>
+    <input type="text" name="userUsername" placeholder="Nome de usuário" required>
+    <input type="password" name="userPassword" placeholder="Senha" required>
+    <input type="email" name="userEmail" placeholder="Email">
+    <input type="tel" name="userPhone" placeholder="Celular">
+    <input type="tel" name="userWhatsapp" placeholder="Whatsapp">
+    <input type="url" name="userFacebook" placeholder="Link do seu perfil do facebook">
+    <input type="text" name="userSnapchat" placeholder="Nome de usaŕio do seu snapchat">
+    <input type="text" name="userInstagram" placeholder="Nome de usaŕio do seu instagram">
+    <input type="text" name="userTwitter" placeholder="Nome de usaŕio do seu twitter">
+
+    <input type="submit" value="Cadastrar">
+    <button type="button">Cancelar</button>
+</form>
+
+<script>
+    var res;
+    document.getElementById('formPostUser').addEventListener('submit', async function(e) {
+        res = await fetch('http://localhost:3000/user', {
+            mode: 'cors',
+            method: 'post',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+            body: new FormData(this)
+        })
+        .then(data => data)
+        .then(dataJSON => dataJSON)
+        .catch(error => error);
+
+        e.preventDefault();
+    });
+</script>
