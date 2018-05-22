@@ -18,7 +18,7 @@
     var res;
     document.getElementById('formPostUser').addEventListener('submit', async function(e) {
         res = await fetch('http://localhost:3000/user', {
-            mode: 'cors',
+            mode: 'no-cors',
             method: 'post',
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

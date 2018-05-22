@@ -2,6 +2,7 @@ angular
     .module('appDataPOA', [])
     .controller('controllerDataPOA', async function() {
         this.data = await getDataPOA();
+        this.teste = 'teste';
     });
 
 async function getDataPOA() {

@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projeto Final</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
-    <script src="./controllerDataPOA.js"></script>
+    <script src="./controller/controllerDataPOA.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body ng-controller="controllerDataPOA as control">
-    <h1>{{control.data.length}} universidades, faculdades, escolas estaduais e federais cadastradas</h1>
+    <h1>{{control.teste}} universidades, faculdades, escolas estaduais e federais cadastradas</h1>
     <table>
         <thead>
             <tr>
@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in control.data | getDataPOA()">
+            <tr ng-repeat="row in control.data">
                 <td>{{row.NOME}}</td>
                 <td>{{row.ENDEREÇO row.NÚMERO}}</td>
                 <td>{{row.BAIRRO}}</td>
