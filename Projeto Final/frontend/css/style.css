@@ -21,3 +21,7 @@ input:focus {
     border-bottom-color: skyblue;
     transition: linear 0.7s;
 }
+
+td {
+    padding: 5px;
+}

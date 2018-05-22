@@ -28,10 +28,8 @@ router.post('/', async function(request, response) {
         phone: request.body.userPhone
     }
     //Validar entradas
-    let a = await serviceUser.insert(object)
-    console.log(a.result)
-    //response.status(200).json(a.result);
-    response.type('text/html').send('<p>success</p>');
+    
+    response.type('text/html').send(await serviceUser.insert(object));
 });
 
 //Update user

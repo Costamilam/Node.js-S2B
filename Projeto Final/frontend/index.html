@@ -8,8 +8,9 @@
     <script src="./controller/controllerDataPOA.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body ng-controller="controllerDataPOA as control">
-    <h1>{{control.teste}} universidades, faculdades, escolas estaduais e federais cadastradas</h1>
+<body ng-controller="controllerDataPOA as controller">
+    <div ng-include="'./include/formPostUser.html'"></div>
+    <h1>{{data.length}} universidades, faculdades, escolas estaduais e federais cadastradas</h1>
     <table>
         <thead>
             <tr>
@@ -17,16 +18,16 @@
                 <th>Endereço</th>
                 <th>Bairro</th>
                 <th>Telefone</th>
-                <th>Site</th>
+                <th>Site/Email</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in control.data">
-                <td>{{row.NOME}}</td>
-                <td>{{row.ENDEREÇO row.NÚMERO}}</td>
-                <td>{{row.BAIRRO}}</td>
-                <td>{{row.FONE || row.DDD row.TELEFONE}}</td>
-                <td>{{row.HOME-PAGE || row.E-MAIL}}</td>
+            <tr ng-repeat="objeto in data">
+                <td>{{objeto.NOME || objeto.ESCOLA}}</td>
+                <td>{{objeto['ENDEREÇO']}} {{objeto['NÚMERO']}}</td>
+                <td>{{objeto.BAIRRO}}</td>
+                <td>{{objeto.FONE}}{{objeto.DDD}} {{objeto.TELEFONE}}</td>
+                <td>{{objeto['HOME-PAGE'] || objeto.EMAIL || objeto['E-MAIL']}}</td>
             </tr>
         </tbody>
     </table>
