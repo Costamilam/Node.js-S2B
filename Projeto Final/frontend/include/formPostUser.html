@@ -1,34 +1,15 @@
-<form ng-submit="submitPostUser()" id="formPostUser">
-    <input type="text" ng-model="objectPostUser.userName" name="userName" placeholder="Nome" required>
-    <input type="text" ng-model="objectPostUser.userUsername" name="userUsername" placeholder="Nome de usuário" required>
-    <input type="password" ng-model="objectPostUser.userPassword" name="userPassword" placeholder="Senha" required>
-    <input type="email" ng-model="objectPostUser.userEmail" name="userEmail" placeholder="Email">
-    <input type="tel" ng-model="objectPostUser.userPhone" name="userPhone" placeholder="Celular">
-    <input type="tel" ng-model="objectPostUser.userWhatsapp" name="userWhatsapp" placeholder="Whatsapp">
-    <input type="url" ng-model="objectPostUser.userFacebook" name="userFacebook" placeholder="Link do seu perfil do facebook">
-    <input type="text" ng-model="objectPostUser.userSnapchat" name="userSnapchat" placeholder="Nome de usaŕio do seu snapchat">
-    <input type="text" ng-model="objectPostUser.userInstagram" name="userInstagram" placeholder="Nome de usaŕio do seu instagram">
-    <input type="text" ng-model="objectPostUser.userTwitter" name="userTwitter" placeholder="Nome de usaŕio do seu twitter">
+<form ng-submit="submitData('post', 'user')" id="formPostUser">
+    <input type="text" ng-model="dataSend.userName" placeholder="Nome" required>
+    <input type="text" ng-model="dataSend.userUsername" placeholder="Nome de usuário" required>
+    <input type="password" ng-model="dataSend.userPassword" placeholder="Senha" required>
+    <input type="email" ng-model="dataSend.userEmail" placeholder="Email">
+    <input type="tel" ng-model="dataSend.userPhone" placeholder="Celular">
+    <input type="tel" ng-model="dataSend.userWhatsapp" placeholder="Whatsapp">
+    <input type="url" ng-model="dataSend.userFacebook" placeholder="Link do seu perfil do facebook">
+    <input type="text" ng-model="dataSend.userSnapchat" placeholder="Nome de usaŕio do seu snapchat">
+    <input type="text" ng-model="dataSend.userInstagram" placeholder="Nome de usaŕio do seu instagram">
+    <input type="text" ng-model="dataSend.userTwitter" placeholder="Nome de usaŕio do seu twitter">
 
     <input type="submit" value="Cadastrar">
     <button type="button">Cancelar</button>
 </form>
-
-<!--script>
-    var res;
-    document.getElementById('formPostUser').addEventListener('submit', async function(e) {
-        res = await fetch('http://localhost:3000/user', {
-            mode: 'no-cors',
-            method: 'post',
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: new FormData(this)
-        })
-        .then(data => data)
-        .then(dataJSON => dataJSON)
-        .catch(error => error);
-
-        e.preventDefault();
-    });
-</script-->

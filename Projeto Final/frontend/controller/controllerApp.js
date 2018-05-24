@@ -1,10 +1,12 @@
 angular
     .module('appDataPOA', [])
     .controller('controllerDataPOA', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
-        $scope.data = [];
-        $scope.objectPostUser = {};
+        $scope.dataResponse = [];
+        $scope.dataSend = {};
 
-        $scope.fetch = function() {
+        $scope.getDataPOA = function() {
+            dataResponse = [];
+            
             for(let resource of ['c003f659-dc05-4e64-8a5a-0f730ac8cff2', 'c2da9ff7-94c8-43af-8141-d03f8d325739', '9b019d7c-1956-4cf8-bc75-9041284d5d81']) {
                 $http({
                     method: 'GET', 
@@ -12,22 +14,22 @@ angular
                     cache: $templateCache
                 })
                 .then(function(response) {
-                    $scope.data = $scope.data.concat(response.data.result.records);
-                });
+                    $scope.dataResponse = $scope.dataResponse.concat(response.data.result.records);
+                })
+                .catch(error => console.log(error));
             }
         }
-        $scope.fetch();
 
-        $scope.submitPostUser = function() {
+        $scope.submitData = function(method, url) {
             $http({
-                method: 'POST',
-                url: 'http://localhost:3000/user',
-                data: $scope.objectPostUser,
+                method: method,
+                url: `http://localhost:3000/${url}`,
+                data: $scope.dataSend,
                 mode: 'no-cors'
             })
             .then(function(response) {
-                $scope.responsePostUser = response;
-                console.log($scope.responsePostUser)
+                $scope.dataResponse = response;
+                console.log(response)
             })
             .catch(error => console.log(error));
         }
