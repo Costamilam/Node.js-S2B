@@ -1,8 +1,12 @@
 angular
     .module('appDataPOA', [])
     .controller('controllerDataPOA', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
+        $scope.currentActivity = 'index';
+        
         $scope.dataResponse = [];
         $scope.dataSend = {};
+
+        $scope.dialog = document.getElementsByTagName('dialog')[0];
 
         $scope.getDataPOA = function() {
             dataResponse = [];
@@ -16,20 +20,23 @@ angular
                 .then(function(response) {
                     $scope.dataResponse = $scope.dataResponse.concat(response.data.result.records);
                 })
-                .catch(error => console.log(error));
+                .catch(error => console.error(error));
             }
         }
 
-        $scope.submitData = function(method, url) {
+        $scope.submitData = function(e) {
+            e.preventDefault();
+
             $http({
-                method: method,
-                url: `http://localhost:3000/${url}`,
+                method: e.srcElement.method,
+                url: e.srcElement.action,
                 data: $scope.dataSend,
                 mode: 'no-cors'
             })
             .then(function(response) {
+                sessionStorage.auth = response.token;
                 $scope.dataResponse = response;
-                console.log(response)
+                $scope.dialog.setAttribute('open', '');
             })
             .catch(error => console.log(error));
         }

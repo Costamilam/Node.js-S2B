@@ -7,8 +7,6 @@ async function MongodbConnect(collectionName) {
     try {
         connection = await mongodb.MongoClient.connect('mongodb://localhost:27017');
 
-        console.log('Connect successfully')
-
         return connection.db('dataPOA').collection(collectionName);
     } catch (error) {
         console.log(error);
@@ -22,13 +20,14 @@ module.exports.insert = async function(object, collectionName) {
 
         let insert = await collection.insertOne(object);
 
+        console.log(insert.ops);
+
         return insert.ops;
     } catch (error) {
         console.log(error);
     } finally {
         if(connection) {
             await connection.close();
-            console.log('Disconnected successfully');
         }
     }
 }
@@ -40,13 +39,14 @@ module.exports.find = async function(object, collectionName) {
 
         let select = await collection.find(object).toArray();
 
+        console.log(select);
+        
         return select;
     } catch (error) {
         console.log(error);
     } finally {
         if(connection) {
             await connection.close();
-            console.log('Disconnected successfully');
         }
     }
 }
@@ -58,13 +58,14 @@ module.exports.update = async function(objectId, objectUpdate, collectionName) {
 
         let update = await collection.updateOne({"_id": mongodb.ObjectId(objectId)}, { $set: objectUpdate });
 
-        return update;
+        console.log(update.ops);
+
+        return update.ops;
     } catch (error) {
         console.log(error);
     } finally {
         if(connection) {
             await connection.close();
-            console.log('Disconnected successfully');
         }
     }
 }
@@ -76,16 +77,14 @@ module.exports.remove = async function(object, collectionName) {
 
         let remove = await collection.remove(object, false);
 
-        console.log('Document removed. _id: ')
-        console.log(remove)
+        console.log(remove.ops);
 
-        return remove;
+        return remove.ops;
     } catch (error) {
         console.log(error);
     } finally {
         if(connection) {
             await connection.close();
-            console.log('Disconnected successfully\n');
         }
     }
 }

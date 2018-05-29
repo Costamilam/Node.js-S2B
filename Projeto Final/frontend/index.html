@@ -5,19 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projeto Final</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
-    <script src="./controller/controllerApp.js"></script>
+    <script src="./controller.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body ng-controller="controllerDataPOA as controller">
-    <nav>
+    <header><nav>
         <ul>
-            <li ng-click="viewMain = 'tableUFEF.html'">tableUFEF.html</li>
-            <li ng-click="viewMain = 'formPostUser.html'">formPostUser.html</li>
-            <li ng-click="viewMain = ''">Home</li>
+            <li ng-click="currentActivity = 'index'">Home</li>
+            <li ng-click="currentActivity = 'getDataPOA'">UFEF</li>
+            <li>Usuários
+                <ul>
+                    <li ng-click="currentActivity = 'formAuthUser'">Conectar</li>
+                    <li ng-click="currentActivity = 'formPostUser'">Cadastrar</li>
+                    <li ng-click="currentActivity = 'formPutUser'">Meu perfil</li>
+                </ul>
+            </li>
+            <li>Encontros
+                <ul>
+                    <li ng-click="currentActivity = 'formPostMeeting'">Criar</li>
+                    <li ng-click="currentActivity = 'formGetMeeting'">Buscar</li>
+                    <li ng-click="currentActivity = 'formPutMeeting'">Meus encontros</li>
+                </ul>
+            </li>
         </ul>
-    </nav>
-    <div id="main">
-        <div ng-include="'./include/'+viewMain"></div>
-    </div>
+    </nav></header>
+
+    <dialog>
+        <h1>{{dataResponse.data.title}}</h1>
+        <p>{{dataResponse.data.message}}</p>
+        <button ng-click="dialog.removeAttribute('open')">FECHAR</button>
+    </dialog>
+    
+    <ng-include src="'./include/'+currentActivity+'.html'" onload="dataResponse = []; dataSend = {};"></ng-include>
 </body>
 </html>
