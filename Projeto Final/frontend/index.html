@@ -18,13 +18,14 @@
                     <li ng-click="currentActivity = 'formAuthUser'">Conectar</li>
                     <li ng-click="currentActivity = 'formPostUser'">Cadastrar</li>
                     <li ng-click="currentActivity = 'formPutUser'">Meu perfil</li>
+                    <li ng-click="currentActivity = 'formGetUser'">Buscar</li>
                 </ul>
             </li>
             <li>Encontros
                 <ul>
                     <li ng-click="currentActivity = 'formPostMeeting'">Criar</li>
                     <li ng-click="currentActivity = 'formGetMeeting'">Buscar</li>
-                    <li ng-click="currentActivity = 'formPutMeeting'">Meus encontros</li>
+                    <li ng-click="currentActivity = 'formPutMeeting'">Meus</li>
                 </ul>
             </li>
         </ul>
@@ -35,7 +36,7 @@
         <p>{{dataResponse.data.message}}</p>
         <button ng-click="dialog.removeAttribute('open')">FECHAR</button>
     </dialog>
-    
+
     <ng-include src="'./include/'+currentActivity+'.html'" onload="dataResponse = []; dataSend = {};"></ng-include>
 </body>
 </html>

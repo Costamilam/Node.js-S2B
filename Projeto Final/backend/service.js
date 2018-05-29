@@ -58,7 +58,7 @@ module.exports.update = async function(objectId, objectUpdate, collectionName) {
 
         let update = await collection.updateOne({"_id": mongodb.ObjectId(objectId)}, { $set: objectUpdate });
 
-        console.log(update.ops);
+        console.log(update.result);
 
         return update.ops;
     } catch (error) {
